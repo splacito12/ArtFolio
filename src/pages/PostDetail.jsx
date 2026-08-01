@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router'
 import { supabase } from '../client'
 import { useUser } from '../User'
-import Sidebar from '../components/SideBar'
+import Sidebar from '../components/Sidebar'
 
 function PostDetail() {
     const { id} = useParams()
