@@ -1,0 +1,663 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color-scheme: light;
+    background-color: #faf3e8;
+}
+
+#root {
+    width: 100%
+}
+
+/*------------------Front Page------------------*/
+.front-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b3d9f2;
+    padding: 20px 40px;
+}
+
+.title {
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.sidebar-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-btn span {
+    width: 30px;
+    height: 3px;
+    background-color: #5b8bb0;
+    border-radius: 2px;
+}
+
+.front-main {
+    display: flex;
+    min-height: calc(100vh - 90px);
+    background-color: #faf3e8;
+}
+
+.front-text {
+    flex: 1;
+    padding: 60px;
+}
+
+.front-text h2 {
+    font-style: italic;
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-top: 100px;
+}
+
+.username-form {
+    margin-top: 100px;
+}
+
+.username-form label {
+    display: block;
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.username-form input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 16px;
+    border: 2px solid #5b8bb0;
+    border-radius: 8px;
+    font-style: italic;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1rem;
+}
+
+.username-form button {
+    margin-top: 16px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: #5b8bb0;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.front-img {
+    flex: 1;
+}
+
+.front-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.user-btn {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/*------------------Sidebar------------------*/
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100%;
+    background-color: #b3d9f2;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    z-index: 20;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-bottom: 40px;
+    align-self: flex-start;
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar nav a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #5b8bb0;
+    font-size: 1.5rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.sidebar nav a:hover {
+    text-decoration: underline;
+    color: #346183;
+    text-shadow:1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.logout-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #85bde7;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.logout-btn:hover {
+    background-color: #346183;
+    color: white;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+/*------------------Feed------------------*/
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b3d9f2;
+    padding: 20px 40px;
+}
+
+.feed-main {
+    background-color: #faf3e8;
+    min-height: calc(100vh - 90px);
+    padding: 40px;
+}
+
+.feed-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.feed-search {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid #5b8bb0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.feed-sort {
+    padding: 10px 14px;
+    border: 2px solid #5b8bb0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.create-post-btn {
+    background-color: #5b8bb0;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.create-post-btn:hover {
+    cursor: pointer;
+    background-color: #b3d9f2;
+    color:#346183;
+    box-shadow:2px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-card {
+    display: block;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.post-card h3 {
+    margin: 0 0 8px 0;
+    color:#5b8bb0;
+}
+
+.post-meta {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.feed-controls .feed-tag-filter {
+    padding: 10px 14px;
+    border: 2px solid #5b8bb0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+/*------------------Create Post------------------*/
+.create-post-main {
+    background-color: #faf3e8;
+    min-height: calc(100vh - 90px);
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-post-main h2{
+    font-family: 'Lilita One', sans-serif;
+    color:#5b8bb0;
+}
+
+.create-post-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    gap: 6px;
+}
+
+.create-post-form label {
+    color: #5b8bb0;
+    margin-top: 14px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.create-post-form input,
+.create-post-form textarea {
+    padding: 10px 14px;
+    border: 2px solid #5b8bb0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.create-post-form button {
+    margin-top: 24px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border:none;
+    background-color: #5b8bb0;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    width: fit-content;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.create-post-form button:hover{
+    cursor: pointer;
+    background-color: #b3d9f2;
+    color:#346183;
+    box-shadow:2px 3px 6px rgba(0, 0, 0, 0.5);
+}
+.create-post-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-error {
+    color: #ca493b;
+    font-weight: bold;
+}
+
+.image-preview {
+    margin-top: 10px;
+    max-width: 300px;
+}
+
+.image-preview img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.tag-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.tag-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #c5dbee;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.tag-checkbox:hover {
+    background-color: #79a3bf;
+    color: white;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/*------------------Post Detail------------------*/
+.post-detail-main {
+    background-color: #faf3e8;
+    min-height:calc(100vh - 90px);
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back-link {
+    color:#5b8bb0;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.post-detail-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 700px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.post-detail-content h2 {
+    color: #5b8bb0;
+    font-family: 'Lilita One', sans-serif;
+    margin-top: 0;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 16px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.post-detail-img {
+    width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+    margin: 16px 0;
+    object-fit: contain;
+    display: block;
+}
+
+.post-body {
+    line-height: 1.6;
+    color: #333;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.post-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.upvote-btn {
+    background-color: #5b8bb0;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.edit-btn {
+    background-color: #6a8ce3;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.delete-btn {
+    background-color: #e05b4c;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.comments-section {
+    max-width: 700px;
+    margin-top: 40px;
+}
+
+.comments-section h3 {
+    color: #5b8bb0;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.comment-form textarea {
+    padding: 10px 14px;
+    border: 2px solid #5b8bb0;
+    border-radius: 8px;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1rem;
+}
+
+.comment-form button {
+    align-self: flex-end;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5b8bb0;
+    color: white;
+    cursor: pointer;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.comment {
+    background-color: white;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.comment-username {
+    color: #5b8bb0;
+    font-family: 'Lilita One', sans-serif;
+    margin: 0 0 4px 0;
+}
+
+.comment-text {
+    margin: 0 0 6px 0;
+    color: #333;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.comment-time {
+    font-family: 'Lilita One', sans-serif;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.no-comments {
+    font-family: 'Lilita One', sans-serif;
+    color: #999;
+}
+
+.post-tags {
+    margin-top: 16px;
+}
+
+.tag-badge {
+    background-color: #e0f0ff;
+    color: #5b8bb0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 0.8rem;
+}
+
+/*------------------Log in------------------*/
+.auth-page {
+    background: #faf3e8;
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px;
+}
+
+.auth-box {
+    padding: 40px;
+    background: #b3d9f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    border: 2px solid #3f6c8f;
+}
+
+.auth-box h2{
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3f6c8f;
+}
+
+.auth-box label {
+    display: block;
+    margin-top: 14px;
+    color: #5b8bb0;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #3f6c8f;
+    border-radius: 8px;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1rem;
+}
+
+.auth-box button {
+    margin-top: 20px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #84afcf;
+    color: black;
+    cursor: pointer;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1rem;
+}
+
+.auth-box button:hover {
+    background-color: #426d8e;
+    color: white;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.auth-box p {
+    margin-top: 16px;
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    font-size: 17px;
+}
+
+.auth-box .error {
+    color: #d96659;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 1rem;
+}
+
+/*------------------Account------------------*/
+.account-heading {
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3f6c8f;
+}
+
+.post-heading {
+    font-family: 'Lilita One', sans-serif;
+    color: #5b8bb0;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
