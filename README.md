@@ -1,4 +1,4 @@
-# Web Development Final Project - *Name of App Here*
+# Web Development Final Project - *ArtFolio*
 
 Submitted by: **Samantha Placito Melendrez**
 
