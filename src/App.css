@@ -559,6 +559,10 @@ body {
 
 .post-tags {
     margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .tag-badge {
