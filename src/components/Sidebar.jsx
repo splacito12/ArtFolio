@@ -2,13 +2,18 @@ import { Link, useNavigate } from "react-router"
 import {useUser} from '../User'
 
 function Sidebar({isOpen, onClose}) {
-    const {logout} = useUser()
+    const {session, logout} = useUser()
     const navigate = useNavigate()
 
     async function handleLogout() {
         await logout()
         onClose()
         navigate('/')
+    }
+
+    function handleLoginClick() {
+        onClose()
+        navigate('/login')
     }
 
     return (
@@ -20,7 +25,12 @@ function Sidebar({isOpen, onClose}) {
                 <Link to="/feed" onClick={onClose}>Feed</Link>
                 <Link to="/create" onClick={onClose}>Create Post</Link>
                 <Link to="/account" onClick={onClose}>Account</Link>
-                <button className='logout-btn' onClick={handleLogout}>Log Out</button>
+                
+                {session ? (
+                    <button className='logout-btn' onClick={handleLogout}>Log Out</button>
+                ) : (
+                    <button className='logout-btn' onClick={handleLoginClick}>Log In</button>
+                )}
             </nav>
         </div>
 
