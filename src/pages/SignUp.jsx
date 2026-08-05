@@ -13,7 +13,7 @@ function SignUp() {
         e.preventDefault()
         setError('')
 
-        if(!username.trim() || password.Length < 6) {
+        if(!username.trim() || password.length < 6) {
             setError('Username and password are required. Password must be at least 6 characters long.')
             return
         }
