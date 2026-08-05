@@ -15,12 +15,10 @@ function PostDetail() {
     const [commentTxt, setCommentTxt] = useState('')
     const [postComment, setPostComment] = useState(false)
     const [sidebar, setSidebar] = useState(false)
-    const [hasVoted, setHasVoted] = useState(false)
 
     useEffect(() => {
         fetchPost()
         fetchComments()
-        checkIfVoted()
     }, [id])
 
     async function fetchPost() {
@@ -53,40 +51,7 @@ function PostDetail() {
         }
     }
 
-    async function checkIfVoted() {
-        if(!session) return
-
-        const {data} = await supabase
-            .from('upvotes')
-            .select('id')
-            .eq('post_id', id)
-            .eq('user_id', session.user.id)
-            .maybeSingle()
-
-        setHasVoted(!!data)
-    }
-
     async function handleUpvote() {
-        const {data: existingVote} = await supabase
-            .from('upvotes')
-            .select('id')
-            .eq('post_id', id)
-            .eq('user_id', session.user.id)
-            .maybeSingle()
-
-        if(existingVote) {
-            return
-        }
-
-        const {error: upvoteError} = await supabase
-            .from('upvotes')
-            .insert({post_id: id, user_id: session.user.id})
-
-        if(upvoteError) {
-            console.error(voteError)
-            return
-        }
-
         const {data, error} = await supabase
             .from('posts')
             .update({upvotes: post.upvotes + 1})
@@ -98,7 +63,6 @@ function PostDetail() {
             console.error(error)
         }else {
             setPost(data)
-            setHasVoted(true)
         }
     }
 
@@ -197,8 +161,8 @@ function PostDetail() {
                     {post.body && <p className="post-body">{post.body}</p>}
 
                     <div className="post-actions">
-                        <button className="upvote-btn" onClick={handleUpvote} disabled={hasVoted}>
-                            {hasVoted ? '✓ Upvoted' : `▲ ${post.upvotes} Upvotes`}
+                        <button className="upvote-btn" onClick={handleUpvote}>
+                            ▲ {post.upvotes} Upvotes
                         </button>
 
                         {isOwner && (
